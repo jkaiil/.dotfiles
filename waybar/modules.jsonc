@@ -1,0 +1,18 @@
+// JKAIL Modules
+// Definer modules som nevnes i config!
+
+{
+"hyprland/workspaces": {
+	"format": "{name}"
+	    
+    },
+"clock": {
+    "format": "{:%I:%M %p}",
+        "rotate": 0,
+        "on-click": "/usr/local/bin/ags -t ActivityCenter",
+        "tooltip-format": "<tt>{calendar}</tt>"
+        },
+        "pulseaudio": {
+
+        }
+}

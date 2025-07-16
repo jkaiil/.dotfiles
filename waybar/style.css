@@ -1,0 +1,27 @@
+/* JKAIL Waybar styling */
+
+/* Symlinks:
+
+"ln -s ~/.dotfiles/waybar/config.jsonc ~/.config/waybar/config.jsonc"
+"ln -s ~/.dotfiles/waybar/modules.jsonc ~/.config/waybar/modules.jsonc"
+"ln -s ~/.dotfiles/waybar/style.css ~/.config/waybar/style.css"
+
+Symlink pywal16:
+"ln -s ~/.cache/wal/colors.css ~/.config/waybar/colors.css"
+
+*/
+
+* {
+    font-family: "JetBrains Mono Nerd Font";
+    /*font-family: "JetBrainsMono Nerd Font";*/
+    font-weight: bold; 
+    font-size: 15px;
+}
+
+window#waybar {
+    background: #eeeeee; 
+    border-radius: 10px; 
+    border: 2px solid #124323; 
+    border-radius: 5px;
+}
+

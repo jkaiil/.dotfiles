@@ -1,0 +1,36 @@
+{
+    // JKAIL Waybar config (separat fil for modules)
+
+    // includes etter symlinks er gjort.
+    "include":["~/.config/waybar/modules.jsonc"],
+
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-top": 7,
+    "margin-bottom": 0,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+
+    "modules-left": [
+     "hyprland/workspaces"
+    ],
+
+	"modules-center": [
+     "hyprland/window"
+    ],
+
+	"modules-right": [
+     "pulseaudio",
+     "network",
+     "clock",
+     "tray",
+     "custom/power"
+     
+    ]
+
+}
