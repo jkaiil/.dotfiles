@@ -1,36 +1,131 @@
+
+    // JKAIL Waybar config
+
 {
-    // JKAIL Waybar config (separat fil for modules)
+    "layer": "bottom",
+    "modules-left": ["custom/launcher","clock","mpris","hyprland/workspaces"],
+    "modules-center":["hyprland/window"],
+    "modules-right": ["cpu", "memory", "disk", "pulseaudio", "battery", "network", "custom/power"],
 
-    // includes etter symlinks er gjort.
-    "include":["~/.config/waybar/modules.jsonc"],
+    "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 1,
+        "markup": "pango",
+        "format": "<span color='#cba6f7'>{icon}</span> <span color='#cdd6f4'> {volume}%</span>",
+        "format-muted": "<span color='#cba6f7'>ﱝ</span> <span color='#cdd6f4'>muted</span>",
+        "on-click": "pavucontrol",
+        "format-icons": {
+            "default": ["", "", ""]
+        }
+    },
 
-    "layer": "top",
-    "position": "top",
-    "mod": "dock",
-    "margin-left": 10,
-    "margin-right": 10,
-    "margin-top": 7,
-    "margin-bottom": 0,
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "reload_style_on_change": true,
+"battery": {
+    "markup": "pango",
+    "format": "<span color='#cba6f7'>{icon} </span> <span color='#cdd6f4'>{capacity}%</span>",
+    "format-charging": "<span color='#cba6f7'></span> <span color='#cdd6f4'>{capacity}%</span>",
+    "format-full": "<span color='#cba6f7'></span> <span color='#cba6f7'></span> <span color='#cdd6f4'>Charged</span>",
+    "format-time": "{H}h{M}m",
+    "format-icons": ["", "", "", "", ""],
+    "interval": 1,
+    "states": {
+        "warning": 25,
+        "critical": 10
+    },
+    "tooltip": false,
+    "on-click": "2"
+},
+    "disk": {
+        "markup": "pango",
+        "interval": 30,
+        "format": "<span color='#cba6f7'></span> <span color='#cdd6f4'>{percentage_used}%</span>",
+        "path": "/"
+    },
 
-    "modules-left": [
-     "hyprland/workspaces"
-    ],
+    "cpu": {
+        "markup": "pango",
+        "interval": 15,
+        "format": "<span color='#cba6f7'></span> <span color='#cdd6f4'>{}%</span>",
+        "max-length": 10
+    },
 
-	"modules-center": [
-     "hyprland/window"
-    ],
+    "memory": {
+        "markup": "pango",
+        "interval": 30,
+        "format": "<span color='#cba6f7'></span> <span color='#cdd6f4'>{}%</span>",
+        "max-length": 10
+    },
 
-	"modules-right": [
-     "pulseaudio",
-     "network",
-     "clock",
-     "tray",
-     "custom/power"
-     
-    ]
+    "custom/launcher": {
+        "markup": "pango",
+        "format": "<span color='#cba6f7'> </span>",
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+
+    // yay -S wlogout.
+    "custom/power": {
+        "markup": "pango",
+        "format": "<span color='#cba6f7'>⏻ </span>",
+        "tooltip": false,
+        "on-click": "wlogout",
+        "on-click-right": "killall rofi"
+    },
+
+    "clock": {
+        "markup": "pango",
+        "format": "<span color='#cba6f7'></span> <span color='#cdd6f4'>{:%A - %B %d, %Y - %R}</span>",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "warp-on-scroll": false,
+        "tooltip": true,
+        "persistent_workspaces": {
+            "outputs": ["*"],
+            "workspaces": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "network": {
+            "format-wifi": "",
+            "format-ethernet":"",
+            "format-disconnected": "",
+            "tooltip-format-disconnected": "Error",
+            "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+            "tooltip-format-ethernet": "{ifname} 🖧 ",
+            "on-click": "kitty nmtui",
+            "tooltip": true,
+            "interval": 1,
+            "min-length": 8,
+            "max-length": 8
+    },
+    "mpris": {
+        "player": "spotify",
+        "markup": "pango",
+        "format-playing": "<span color='#cba6f7'></span> <span color='#cdd6f4'>{artist} - {title}</span>",
+        "format-paused": "<span color='#cba6f7'></span> <span color='#cdd6f4'>{artist} - {title}</span>",
+        "format-stopped": "",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "tooltip": true,
+        "tooltip-format": "{playerName}\n{title}\n{artist}",
+        "max-length": 30
+    },
+    "hyprland/window": {
+        "format": "<span color='#cba6f7'></span> <span color='#cdd6f4'> {}</span>",
+        "rewrite": {
+            "": "Desktop"
+      },
+        "max-length": 30,
+        "tooltip": false
+    }
+
 
 }
